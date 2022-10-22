@@ -10,7 +10,7 @@ import tn.esprit.rh.achat.entities.SecteurActivite;
 @Component
 public class ConverterSecteur {
 	
-
+//
 public static SecteurDTO entityToDto(SecteurActivite secteurActivite) {
 		
 	SecteurDTO dto = new SecteurDTO();
