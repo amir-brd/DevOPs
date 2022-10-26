@@ -7,7 +7,7 @@ pipeline {
         stage('github') {
             steps {
                 echo "github" ;
-               
+                git branch: 'seyf',
                 git 'https://github.com/5se4-G1/DevOPs.git';
             }
             
