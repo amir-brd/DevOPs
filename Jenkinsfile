@@ -4,13 +4,20 @@ pipeline {
  
 
     stages {
-        stage('github') {
+        /*stage('github') {
             steps {
                 echo "github" ;
                 git branch: 'seyf',
                 git 'https://github.com/5se4-G1/DevOPs.git';
             }
             
+        }*/
+         
+         stage('Checkout GIT ') {
+            steps {
+                echo 'Pulling ...';
+                git branch: 'seyf', url: 'https://github.com/5se4-G1/DevOPs.git'            
+	    }
         }
              stage('cleaning java Project'){
              steps{
@@ -37,7 +44,7 @@ pipeline {
               }
           }
     
-    stage('deploy jar to nexus'){
+   /* stage('deploy jar to nexus'){
               steps{
                   sh 'mvn deploy:deploy-file -DgroupId=tn.esprit.rh \
                         -DartifactId=achat \
@@ -47,5 +54,11 @@ pipeline {
                         -DrepositoryId=Pipline-independant \
                         -Durl=http://192.168.56.3:8081/repository/Pipline-independant/'
               }
-          }
+          }*/
+          
+          stage("NEXUS") {
+        	steps {
+		 sh 'mvn clean -DskipTests deploy'
+              }
+        }
       }}
