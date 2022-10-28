@@ -50,7 +50,7 @@ public class FactureServiceImplTest {
 		List<Facture> response= factureServiceImpl.retrieveAllFactures();
 		assertEquals(0, response.size());
 	}
-	@Test
+	
 	void test_addFacture_ok() {
 		DetailFacture df= new DetailFacture();
 		df.setIdDetailFacture(1L);
