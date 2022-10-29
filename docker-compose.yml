@@ -16,6 +16,6 @@ services:
     ports:
       - 8083:8083
     depends_on:
-      - database
+      - databasee
 
     restart: on-failure
