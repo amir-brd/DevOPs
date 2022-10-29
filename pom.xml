@@ -86,12 +86,12 @@
 		</dependency>
 
 	</dependencies>
-	<!--<distributionManagement>
+	<distributionManagement>
 		<repository>
 			<id>deploymentRepo</id>
 			<url>http://192.168.1.13:8081/repository/maven-releases/</url>
 		</repository>
-	</distributionManagement>-->
+	</distributionManagement>
 	<build>
 		<plugins>
 			<plugin>
