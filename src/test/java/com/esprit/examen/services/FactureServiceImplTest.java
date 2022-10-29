@@ -1,68 +1,55 @@
-package com.esprit.examen.services;
+package tn.esprit.rh.achat.services.facture;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import com.esprit.examen.entities.DetailFacture;
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.repositories.DetailFactureRepository;
-import com.esprit.examen.repositories.FactureRepository;
-import com.esprit.examen.repositories.FournisseurRepository;
-import com.esprit.examen.repositories.OperateurRepository;
-import com.esprit.examen.repositories.ProduitRepository;
+import tn.esprit.rh.achat.entities.Facture;
+import tn.esprit.rh.achat.services.IFactureService;
 
+@SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
 
-@ExtendWith(MockitoExtension.class)
-public class FactureServiceImplTest {
-	
-@InjectMocks
-	
-	FactureServiceImpl factureServiceImpl;
+public class FactureServiceImpTest {
 
-	@Mock
-	FactureRepository factureRepository;
-	@Mock
-	OperateurRepository operateurRepository;
-	@Mock
-	DetailFactureRepository detailFactureRepository;
-	@Mock
-	FournisseurRepository fournisseurRepository;
-	@Mock
-	ProduitRepository produitRepository;
-	@Mock
-    ReglementServiceImpl reglementService;
-	
-	@Test
-	void test_retrieveAllFactures_ok() {
-		
-		when(factureRepository.findAll()).thenReturn(new ArrayList());
-		List<Facture> response= factureServiceImpl.retrieveAllFactures();
-		assertEquals(0, response.size());
-	}
-	
-	void test_addFacture_ok() {
-		DetailFacture df= new DetailFacture();
-		df.setIdDetailFacture(1L);
-		//mock
-		when(factureRepository.save(any())).thenReturn(df);	
-		//call function 
-		factureServiceImpl.addFacture(new Facture());
-		//assert
-		assertEquals(1L,df.getIdDetailFacture());
-		}
-
-	
+@Autowired
+IFactureService us;
+@Test
+@Order(1)
+public void testRetrieveAllFactures() {
+List<Facture> listproduits = us.retrieveAllFactures();
+Assertions.assertEquals(0, listproduits.size());
 }
 
 
+@Test
+@Order(2)
+public void testAddFacture() {
+Date C = new Date();
+Date M = new Date();
+Facture f = new Facture(2500, 21300,C ,M, true);
+Facture FactureAdded = us.addFacture(f);
+Assertions.assertEquals(f.getIdFacture(), FactureAdded.getIdFacture());
+}
+
+
+@Test
+@Order(3)
+public void testRetrieveFacture() {
+Facture factureRetrived = us.retrieveFacture(1L);
+Assertions.assertEquals(1L, factureRetrived.getIdFacture());
+
+}
+
+
+}
