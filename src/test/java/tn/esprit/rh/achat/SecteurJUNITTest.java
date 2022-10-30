@@ -17,10 +17,10 @@ import tn.esprit.rh.achat.dto.SecteurDTO;
 import tn.esprit.rh.achat.entities.SecteurActivite;
 import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
-//@SpringBootTest
-//@TestMethodOrder(OrderAnnotation.class)
+@SpringBootTest
+@TestMethodOrder(OrderAnnotation.class)
 class SecteurJUNITTest {
-	/*@Autowired SecteurActiviteServiceImpl s;
+	@Autowired SecteurActiviteServiceImpl s;
 	@Test
 	@Order(1)
 	 void all() {
@@ -55,5 +55,5 @@ Assertions.assertEquals(1,retrived.getIdSecteurActivite());
  void delete() {
  s.deleteSecteurActivite((long) 3);
 Assertions.assertNull(s.retrieveSecteurActivite2((long) 3));
-}*/
+}
 }
