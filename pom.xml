@@ -8,7 +8,7 @@
 		<version>2.5.3</version>
 		<relativePath/> 
 	</parent>
-	<groupId>tn.esprit.rh</groupId>
+	<groupId>com.esprit.examen</groupId>
 	<artifactId>achat</artifactId>
 	<version>1.0</version>
 	<name>achat</name>
