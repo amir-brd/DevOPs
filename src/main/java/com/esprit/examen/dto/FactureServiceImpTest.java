@@ -1,4 +1,4 @@
-package com.esprit.examen.test;
+package com.esprit.examen.dto;
 
 
 import java.text.ParseException;
