@@ -20,15 +20,15 @@ archive 'target/*.jar'
 		}
 	}
 	
-/*stage('Nexus') {
+stage('Nexus Stage') {
 steps {
-//sh 'mvn clean deploy -DskipTests'
+sh 'mvn clean deploy -DskipTests'
 sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 }
 }  
 
 
-       stage('Docker Build and Push') {
+       /*stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
            sh 'printenv'
@@ -37,9 +37,9 @@ sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
          }
        }
      }
+*/
 
-
-stage('Docker Compose') {
+/*stage('Docker Compose') {
        steps {
                sh 'docker-compose up --d --force-recreate '
        }
