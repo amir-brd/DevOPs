@@ -44,6 +44,7 @@ public class FournisseurServiceImplUTest {
 		List<Fournisseur> response= fournisseurServiceImpl.retrieveAllFournisseurs();
 		assertEquals(0, response.size());
 	}
+	/*@Test
 	void test_addFournisseur_ok() {
 		DetailFournisseur df= new DetailFournisseur();
 		df.setIdDetailFournisseur(1L);
@@ -53,7 +54,7 @@ public class FournisseurServiceImplUTest {
 		fournisseurServiceImpl.addFournisseur(new Fournisseur());
 		//assert
 		assertEquals(1L,df.getIdDetailFournisseur());
-		}
+		}*/
 
 	
 }
