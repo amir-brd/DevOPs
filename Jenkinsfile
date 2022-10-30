@@ -12,13 +12,14 @@ archive 'target/*.jar'
 }
 }
 	
-	stage ('SonarQuality') {
+	/*stage ('SonarQuality') {
 		steps {
 			
              sh "mvn sonar:sonar -Dsonar.projectKey=Validation -Dsonar.host.url=http://192.168.56.3:9000 -Dsonar.login=e3c6356bd62f71422becec965d75799558682c05"
 	
 		}
-	}
+	}*/
+	
 	
 stage('Nexus Stage') {
 steps {
