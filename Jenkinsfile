@@ -12,10 +12,10 @@ archive 'target/*.jar'
 }
 }
 	
-	stage ('SonarQaulity') {
+	stage ('SonarQuality') {
 		steps {
 			
-             sh "mvn sonar:sonar  -Dsonar.projectKey=sonardevops -Dsonar.host.url=http://192.168.56.3:9000 -Dsonar.login=admin -Dsonar.password=cherni"
+             sh "mvn sonar:sonar -Dsonar.projectKey=Validation -Dsonar.host.url=http://192.168.56.3:9000 -Dsonar.login=e3c6356bd62f71422becec965d75799558682c05"
 	
 		}
 	}
