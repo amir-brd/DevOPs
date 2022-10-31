@@ -4,7 +4,7 @@ services:
     image: mysql
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: wejden
+      MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: achatdb
     ports:
       - 3306:3306
