@@ -8,14 +8,17 @@ services:
       MYSQL_DATABASE: achatdb
     ports:
       - 3306:3306
+    networks:
+        - AppNet
     volumes:
        - /home/mysql/data:/var/lib/mysql
   spring-boot:
-    build: ../achat
-    container_name: dockercomposeAPP
+    image: wejdenmhamdi/projet
+    container_name: spring
     ports:
       - 8083:8083
     depends_on:
-      - achatdb
-
+      - database
+    networks:
+      - AppNet
     restart: on-failure
