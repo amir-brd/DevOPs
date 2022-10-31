@@ -3,6 +3,7 @@ package tn.esprit.rh.achat.services;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.rh.achat.entities.DetailFournisseur;
 import tn.esprit.rh.achat.entities.Fournisseur;
 import tn.esprit.rh.achat.entities.SecteurActivite;
@@ -18,6 +19,7 @@ import org.apache.logging.log4j.Logger;
 
 @Service
 @Slf4j
+@Transactional
 public class FournisseurServiceImpl implements IFournisseurService {
 
 	@Autowired
@@ -66,17 +68,11 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	}
 
 	private DetailFournisseur  saveDetailFournisseur(Fournisseur f){
-		DetailFournisseur detailFournisseur =null;
-		try{
-			l.info("In Method DetailFournisseur :");
+		l.info("In Method DetailFournisseur :");
 		DetailFournisseur df = f.getDetailFournisseur();
 		detailFournisseurRepository.save(df);
-			l.info("out of Method DetailFournisseur with succes");
-		}catch (Exception e) {
-			l.error("out of Method DetailFournisseur with Errors + e");
-		}
-
-		return detailFournisseur;
+		l.info("out of Method DetailFournisseur with succes");
+		return df;
 	}
 
 	public Fournisseur updateFournisseur(Fournisseur f) {
@@ -119,6 +115,7 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	}
 
 	@Override
+
 	public void assignSecteurActiviteToFournisseur(Long idSecteurActivite, Long idFournisseur) {
 		try {
 			l.info("In Method :");
