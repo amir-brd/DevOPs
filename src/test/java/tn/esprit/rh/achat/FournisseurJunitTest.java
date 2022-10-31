@@ -1,4 +1,5 @@
 package tn.esprit.rh.achat;
+import tn.esprit.rh.achat.dto.SecteurDTO;
 import tn.esprit.rh.achat.services.IFournisseurService;
 import tn.esprit.rh.achat.entities.Fournisseur;
 import java.util.List;
@@ -18,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 
 
 public class FournisseurJunitTest {
-	//private static final long serialVersionUID = 1L;
+
 	@Autowired
 	IFournisseurService f;
 	@Test
@@ -42,24 +43,30 @@ public class FournisseurJunitTest {
 		assertEquals(expected+1, f.retrieveAllFournisseurs().size());
 
 	}
-	/*void delete() {
- s.deleteSecteurActivite((long) 3);
-Assertions.assertNull(s.retrieveSecteurActivite2((long) 3));
-}*/
+
 	@Test
 	@Order(3)
 	 void deleteFournisseur_ok(){
-		//List<Fournisseur> fournisseurs = f.retrieveAllFournisseurs();
-		//int expected=fournisseurs.size();
 		f.deleteFournisseur(2L);
-		//assertEquals(expected-1, f.retrieveAllFournisseurs().size());
-
-
+		Assertions.assertNull(f.retrieveFournisseur(1l));
 	}
+
 	@Test
 	@Order(4)
 	void updateFournisseur_ok(){
-		f.updateFournisseur();
+
+	}
+	@Test
+	@Order(5)
+	public void retriveFournisseur_ok(){
+	Fournisseur retrived = f.retrieveFournisseur(3l);
+		Assertions.assertEquals(3l,retrived.getIdFournisseur());
+
+	}
+	@Test()
+	@Order(6)
+	public void assignSecteurActiviteToFournisseur(){
+		
 	}
 
 }
