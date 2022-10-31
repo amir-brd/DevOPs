@@ -1,64 +1,53 @@
 pipeline {
-     agent any
 
- 
+agent any
 
-    stages {
-        /*stage('github') {
-            steps {
-                echo "github" ;
-                git branch: 'seyf',
-                git 'https://github.com/5se4-G1/DevOPs.git';
-            }
-            
-        }*/
-         
-         stage('Checkout GIT ') {
-            steps {
-                echo 'Pulling ...';
-                git branch: 'seyf', url: 'https://github.com/5se4-G1/DevOPs.git'            
-	    }
-        }
-             stage('cleaning java Project'){
-             steps{
-                 sh 'mvn clean'
+stages {
 
-             }
+
+stage('Build Artifact - Maven') {
+steps {
+sh "mvn clean package -DskipTests=true"
+archive 'target/*.jar'
+}
+}
+	
+     stage ('SonarQuality') {
+		steps {
+			
+             sh "mvn sonar:sonar -Dsonar.projectKey=Validation -Dsonar.host.url=http://192.168.56.3:9000 -Dsonar.login=e3c6356bd62f71422becec965d75799558682c05"
+	
+		}
+	}
+	
+	
+	
+stage('Nexus Stage') {
+steps {
+sh 'mvn clean deploy -DskipTests'
+sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+}
+}  
+
+
+       /*stage('Docker Build and Push') {
+       steps {
+         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+           sh 'printenv'
+           sh 'sudo docker build -t motazmezrani/ci:latest .'
+           sh 'docker push motazmezrani/ci:latest '
          }
-           stage('compiling java Project'){
-             steps{
-                 sh 'mvn compile'
+       }
+     }
+*/
 
-             }
-         }
-          
-         
-         stage("build & SonarQube analysis") {
-            steps {
-                sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
-            }
-          }
-           stage('package artifact'){
-              steps{
-                  sh 'mvn package'
-              }
-          }
-    
-   /* stage('deploy jar to nexus'){
-              steps{
-                  sh 'mvn deploy:deploy-file -DgroupId=tn.esprit.rh \
-                        -DartifactId=achat \
-                        -Dversion=1.0 \
-                        -Dpackaging=jar \
-                        -Dfile=./target/achat-1.0.jar \
-                        -DrepositoryId=Pipline-independant \
-                        -Durl=http://192.168.56.3:8081/repository/Pipline-independant/'
-              }
-          }*/
-          
-          stage("NEXUS") {
-        	steps {
-		 sh 'mvn clean -DskipTests deploy'
-              }
-        }
-      }}
+/*stage('Docker Compose') {
+       steps {
+               sh 'docker-compose up --d --force-recreate '
+       }
+     }
+*/
+
+}  
+
+}
