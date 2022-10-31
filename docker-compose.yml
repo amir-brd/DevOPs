@@ -12,10 +12,10 @@ services:
     volumes:
        - /home/mysql/data:/var/lib/mysql
   spring-boot:
-    image: wejdenmhamdi/alpine
+    image: wejdenmhamdi/projet
     container_name: spring
     ports:
-      - 8083:8083
+      - 8089:8089
     depends_on:
       - database
     restart: on-failure
