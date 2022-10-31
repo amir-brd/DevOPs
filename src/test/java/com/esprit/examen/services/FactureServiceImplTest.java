@@ -14,13 +14,15 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.esprit.examen.entities.DetailFacture;
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.repositories.DetailFactureRepository;
-import com.esprit.examen.repositories.FactureRepository;
-import com.esprit.examen.repositories.FournisseurRepository;
-import com.esprit.examen.repositories.OperateurRepository;
-import com.esprit.examen.repositories.ProduitRepository;
+import tn.esprit.rh.entities.DetailFacture;
+import tn.esprit.rh.entities.Facture;
+import tn.esprit.rh.repositories.DetailFactureRepository;
+import tn.esprit.rh.repositories.FactureRepository;
+import tn.esprit.rh.repositories.FournisseurRepository;
+import tn.esprit.rh.repositories.OperateurRepository;
+import tn.esprit.rh.repositories.ProduitRepository;
+import tn.esprit.rh.services.FactureServiceImpl;
+import tn.esprit.rh.services.ReglementServiceImpl;
 
 
 @ExtendWith(MockitoExtension.class)
