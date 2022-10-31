@@ -1,20 +1,21 @@
-version: '2.2'
+version: '3'
 services:
-  applicationAchat:
-    build: ../projetAchat
-    restart: always
+  database:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: wejden
+      MYSQL_DATABASE: achatdb
+    ports:
+      - 3306:3306
+    volumes:
+       - /home/mysql/data:/var/lib/mysql
+  spring-boot:
+    build: ../achat
+    container_name: dockercomposeAPP
     ports:
       - 8083:8083
     depends_on:
-      - mysqldb1
-  mysqldb1:
-    image: "mysql:latest"
-    restart: always
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_DATABASE: achatdb
-      MYSQL_USER: root
-      MYSQL_PASSWORD: wejden
-      MYSQL_ROOT_PASSWORD: wejden
-      MYSQL_TCP_PORT: 3306
+      - achatdb
+
+    restart: on-failure
