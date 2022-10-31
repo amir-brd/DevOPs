@@ -1,7 +1,7 @@
 version: '2.2'
 services:
   applicationAchat:
-    build: ../achat
+    build: ../projetAchat
     restart: always
     ports:
       - 8083:8083
