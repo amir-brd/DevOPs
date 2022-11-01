@@ -33,20 +33,20 @@ nexusArtifactUploader artifacts
 	
 	[
 		
-	artifactId: 'achat',
-	classifier: '', file: 'target/achat.jar', 
-	type: 'jar',
+	artifactId: "achat",
+	classifier: "", file: "target/achat.jar", 
+	type: "jar",
 	]
      ]
 	
 	
-	credentialsId: 'nexus',
-	groupId: 'tn.esprit.rh',
-	nexusUrl: '192.168.56.3:8081',
-	nexusVersion: 'nexus3',
-	protocol: 'http', 
-	repository: 'validatioon-release',
-	version: '1.0'
+	credentialsId: "nexus",
+	groupId: "tn.esprit.rh",
+	nexusUrl: "192.168.56.3:8081",
+	nexusVersion: "nexus3",
+	protocol: "http", 
+	repository: "validatioon-release",
+	version: "1.0"
 
 /*sh 'mvn clean deploy -DskipTests'*/
 /*sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'*/
