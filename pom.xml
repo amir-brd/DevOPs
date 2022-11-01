@@ -8,7 +8,7 @@
 		<version>2.5.3</version>
 		<relativePath/> 
 	</parent>
-	<groupId>com.esprit.examen</groupId>
+	<groupId>tn.esprit.rh</groupId>
 	<artifactId>achat</artifactId>
 	<version>1.0</version>
 	<name>achat</name>
@@ -75,14 +75,6 @@
 
 	</dependencies>
 	
-	
-	<distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<url>http://192.168.56.3:8081//repository/maven-releases/</url>
-		</repository>
-	</distributionManagement>
-
 	<build>
 		<plugins>
 			<plugin>

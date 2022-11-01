@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import tn.esprit.rh.entities.Facture;
+import tn.esprit.rh.entities.Fournisseur;
 
 public interface IFactureService {
 	List<Facture> retrieveAllFactures();
@@ -13,7 +14,9 @@ public interface IFactureService {
 	Facture addFacture(Facture f);
 
 	void cancelFacture(Long id);
-
+	
+	Facture updateFacture(Facture f);
+		
 	Facture retrieveFacture(Long id);
 	
 	void assignOperateurToFacture(Long idOperateur, Long idFacture);

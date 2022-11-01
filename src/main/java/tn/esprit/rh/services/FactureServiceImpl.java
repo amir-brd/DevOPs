@@ -160,6 +160,13 @@ public class FactureServiceImpl implements IFactureService {
 		float pourcentage=(totalRecouvrementEntreDeuxDates/totalFacturesEntreDeuxDates)*100;
 		return pourcentage;
 	}
+
+
+	@Override
+	public Facture updateFacture(Facture f) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
