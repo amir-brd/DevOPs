@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    environment {
+        registry = "fatmaBe/projet"
+        registryCredential = 'dockerHub'
+        dockerImage = ''
+    }
+
+ stages {
+      
+        stage('Git stage') {
+          
+            steps {
+                echo "Getting project form github";
+                 git branch: 'fatma',
+                 url : 'https://github.com/5se4-G1/DevOPs.git';
+               
+            }
+        }
+         stage('cleaning java Project'){
+             steps{
+                 sh 'mvn clean'
+
+             }
+         }
+         stage('install  java Project'){
+             steps{
+                 sh 'mvn install '
+
+             }
+         }
+         stage('compiling  java Project'){
+             steps{
+                 sh 'mvn compile  '
+
+             }
+         }
+}
