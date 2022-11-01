@@ -23,7 +23,7 @@ import tn.esprit.rh.achat.*;
 public class FactureServiceImpTest {
 
 @Autowired
-IFactureService us;
+ IFactureService us;
 @Test
 @Order(1)
 public void testRetrieveAllFactures() {
