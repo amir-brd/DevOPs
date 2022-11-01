@@ -35,9 +35,9 @@ nexusArtifactUploader artifacts
 		
 	artifactId: 'achat',
 	classifier: '', file: 'target/achat.jar', 
-	type: 'jar'
+	type: 'jar',
 	]
-     ], 
+     ]
 	
 	
 	credentialsId: 'nexus',
