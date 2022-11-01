@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNotEquals;
 @TestMethodOrder(OrderAnnotation.class)
 
 
-public class FournisseurJunitTest {
+ class FournisseurJunitTest {
 
 	@Autowired
 	IFournisseurService f;
@@ -43,7 +43,7 @@ public class FournisseurJunitTest {
 
 	@Test
 	@Order(2)
-	public void addFournisseur_ok() {
+	void addFournisseur_ok() {
 		List<Fournisseur> fournisseurs = f.retrieveAllFournisseurs();
 		int currentSize = fournisseurs.size();
 		Fournisseur fournisseur = new Fournisseur();
@@ -82,7 +82,7 @@ public class FournisseurJunitTest {
 
 	@Test
 	@Order(5)
-	public void retriveFournisseur_ok() {
+	 void retriveFournisseur_ok() {
 		Fournisseur retrived = f.retrieveFournisseur(3l);
 		Assertions.assertEquals(3l, retrived.getIdFournisseur());
 
@@ -91,7 +91,7 @@ public class FournisseurJunitTest {
 	@Test()
 	@Order(6)
 	@Transactional
-	public void assignSecteurActiviteToFournisseur() {
+	void assignSecteurActiviteToFournisseur() {
 
 		f.assignSecteurActiviteToFournisseur(1l, 3L);
 		Fournisseur fourn =f.retrieveFournisseur(3l);

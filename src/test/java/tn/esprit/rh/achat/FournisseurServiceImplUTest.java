@@ -26,7 +26,7 @@ import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
 import tn.esprit.rh.achat.services.FournisseurServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
-public class FournisseurServiceImplUTest {
+ class FournisseurServiceImplUTest {
 
 	@InjectMocks
 	FournisseurServiceImpl fournisseurServiceImpl;
