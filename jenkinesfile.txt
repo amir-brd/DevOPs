@@ -1,11 +1,5 @@
 pipeline {
-    agent any
-    environment {
-        registry = "fatmaBe/projet"
-        registryCredential = 'dockerHub'
-        dockerImage = ''
-    }
-
+  
  stages {
       
         stage('Git stage') {
