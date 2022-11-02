@@ -32,8 +32,14 @@ sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 	
 }
 }  
+	
+	
+              /*stage('Unit test - Junit and jacoco') {
+            steps {
+              sh "mvn test"
+            }
 
-
+	      }*/
        /*stage('Docker Build and Push') {
        steps {
          withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
