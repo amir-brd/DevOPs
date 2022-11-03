@@ -1,4 +1,3 @@
-pipeline {
   
  stages {
       
@@ -33,7 +32,6 @@ pipeline {
                  sh 'mvn install '
 
              }
-         }
          stage('compiling  java Project'){
              steps{
                  sh 'mvn compile  '
