@@ -1,7 +1,37 @@
+<<<<<<< HEAD
 pipeline {
+=======
+  
+ stages {
+      
+        stage('Git stage') {
+          
+            steps {
+                echo "Getting project form github";
+                 git branch: 'fatma',
+                 url : 'https://github.com/5se4-G1/DevOPs.git';
+               
+            }
+        }
+         stage('cleaning java Project'){ stages {
+      
+        stage('Git stage') {
+          
+            steps {
+                echo "Getting project form github";
+                 git branch: 'wejdenmhamdi',
+                 url : 'https://github.com/5se4-G1/DevOPs.git';
+               
+            }
+        }
+         stage('cleaning java Project'){
+             steps{
+                 sh 'mvn clean'
+>>>>>>> 03630481d5b9e8592ab2b52311900ffe1f0d79ea
 
 agent any
 
+<<<<<<< HEAD
 stages {
 
 
@@ -10,3 +40,28 @@ steps {
 sh "mvn clean package -DskipTests=true"
 archive 'target/*.jar'
 }
+=======
+             }
+         stage('compiling  java Project'){
+             steps{
+                 sh 'mvn compile  '
+
+             }
+                 sh 'mvn clean'
+
+             }
+         }
+         stage('install  java Project'){
+             steps{
+                 sh 'mvn install '
+
+             }
+         }
+         stage('compiling  java Project'){
+             steps{
+                 sh 'mvn compile  '
+
+             }
+         }
+}
+>>>>>>> 03630481d5b9e8592ab2b52311900ffe1f0d79ea
