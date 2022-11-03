@@ -11,7 +11,14 @@ sh "mvn clean package -Dmaven.test.skip=true"
 archive 'target/*.jar'
 }
 }
-
+	stage('SonarQube stage') {
+          
+            steps {
+            sh'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar -e'
+               
+            }
+        }
+	
   stage('Nexus Stage') {
 steps {
 	
