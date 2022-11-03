@@ -13,7 +13,7 @@ archive 'target/*.jar'
 }
 	stage("build & SonarQube analysis") {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.7:9000 -Dsonar.login=admin -Dsonar.password=sonar'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.10:9000 -Dsonar.login=admin -Dsonar.password=sonar'
             }
 	
   stage('Nexus Stage') {
