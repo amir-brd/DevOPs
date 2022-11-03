@@ -99,4 +99,4 @@ import static org.junit.Assert.assertNotEquals;
 		assertEquals(1L, Optional.ofNullable(fourn.getSecteurActivites().iterator().next().getIdSecteurActivite()).get().longValue());
 
 	}
-}
+} */
