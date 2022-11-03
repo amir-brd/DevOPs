@@ -1,38 +1,26 @@
 pipeline {
-    agent any
-    environment {
-        registry = "fatmaBe/projet"
-        registryCredential = 'dockerHub'
-        dockerImage = ''
-    }
 
- stages {
-      
-        stage('Git stage') {
-          
-            steps {
-                echo "Getting project form github";
-                 git branch: 'fatma',
-                 url : 'https://github.com/5se4-G1/DevOPs.git';
-               
-            }
-        }
-         stage('cleaning java Project'){
-             steps{
-                 sh 'mvn clean'
+agent any
 
-             }
-         }
-         stage('install  java Project'){
-             steps{
-                 sh 'mvn install '
+stages {
 
-             }
-         }
-         stage('compiling  java Project'){
-             steps{
-                 sh 'mvn compile  '
 
-             }
-         }
+stage('Build Artifact - Maven') {
+steps {
+sh "mvn clean package -Dmaven.test.skip=true"
+archive 'target/*.jar'
+}
+}
+
+  stage('Nexus Stage') {
+steps {
+	
+	
+sh 'mvn clean deploy -DskipTests'
+sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+	
+	
+}
+}  
+}
 }
