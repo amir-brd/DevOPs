@@ -65,8 +65,8 @@ sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 }                   
 post {
         always {
-	
- mail bcc: '', body: 'Ceci est une vérification', cc: '', from: '', replyTo: '', subject: 'Jenkins-Build', to: 'sayfouncherni@gmail.com'
+	mail bcc: '', body: 'Ceci est un test de mailing', cc: '', from: '', replyTo: '', subject: 'Jenkins-buils-Notification', to: 'sayfouncherni@gmail.com'
+ 
 }
 }
 }  
