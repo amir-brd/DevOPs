@@ -58,16 +58,8 @@ sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
      }
 */
 	
-	stage("Email Notification"){
-                  success {
+	
                        
-                        emailext body: 'Pipeline build successfully', subject: 'Pipeline build', to: 'sayfounchernigmail.com'
-                      }
-                      failure {
-                
-                        emailext body: 'Pipeline build not success', subject: 'Pipeline build', to: 'sayfouncherni@gmail.com'
-                      }
-            }
 
 }  
 
