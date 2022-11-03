@@ -11,8 +11,34 @@ pipeline {
                
             }
         }
+         stage('cleaning java Project'){ stages {
+      
+        stage('Git stage') {
+          
+            steps {
+                echo "Getting project form github";
+                 git branch: 'wejdenmhamdi',
+                 url : 'https://github.com/5se4-G1/DevOPs.git';
+               
+            }
+        }
          stage('cleaning java Project'){
              steps{
+                 sh 'mvn clean'
+
+             }
+         }
+         stage('install  java Project'){
+             steps{
+                 sh 'mvn install '
+
+             }
+         }
+         stage('compiling  java Project'){
+             steps{
+                 sh 'mvn compile  '
+
+             }
                  sh 'mvn clean'
 
              }
