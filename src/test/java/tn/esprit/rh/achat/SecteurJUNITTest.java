@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat;
+/*package tn.esprit.rh.achat;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -56,4 +56,4 @@ Assertions.assertEquals(1,retrived.getIdSecteurActivite());
  s.deleteSecteurActivite((long) 3);
 Assertions.assertNull(s.retrieveSecteurActivite2((long) 3));
 }
-}
+}*/
