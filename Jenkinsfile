@@ -15,6 +15,7 @@ archive 'target/*.jar'
             steps {
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.10:9000 -Dsonar.login=admin -Dsonar.password=sonar'
             }
+	}
 	
   stage('Nexus Stage') {
 steps {
