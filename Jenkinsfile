@@ -37,9 +37,6 @@ archive 'target/*.jar'
               }
           }
 	  
-
-}  
-}
  stage('Building our image') { 
             steps { 
                 script { 
