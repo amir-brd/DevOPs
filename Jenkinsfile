@@ -12,7 +12,7 @@ stages {
 10
             steps { 
 11
-                git 'https://github.com/YourGithubAccount/YourGithubRepository.git' 
+                git 'https://github.com/5se4-G1/DevOPs.git' 
 12
             }
 13
