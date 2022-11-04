@@ -1,6 +1,11 @@
 pipeline {
 
 agent any
+	 environment {
+        registry = "fatmabe/projet"
+        registryCredential = 'dockerHub'
+        dockerImage = ''
+    }
 
 stages {
 
