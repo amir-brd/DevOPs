@@ -2,7 +2,7 @@ pipeline {
 
 agent any
 	 environment {
-        registry = "fatmabe/projet"
+        registry = "wiemifaoui/projet"
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
@@ -18,7 +18,7 @@ archive 'target/*.jar'
 }
 	stage("build & SonarQube analysis") {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.10:9000 -Dsonar.login=admin -Dsonar.password=sonar'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.139:9000 -Dsonar.login=admin -Dsonar.password=sonar'
             }
 	}
 	
@@ -33,7 +33,7 @@ archive 'target/*.jar'
                         -Dfile=./target/achat-1.1.0.jar \
                         -DrepositoryId=esprit-devops \
                         -Durl=http://
-				192.168.1.10:8081/repository/esprit-devops/'
+				192.168.1.139:8081/repository/esprit-devops/'
               }
           }
 	  
