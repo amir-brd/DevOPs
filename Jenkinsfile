@@ -22,15 +22,22 @@ archive 'target/*.jar'
             }
 	}
 	
-  stage('Nexus Stage') {
-steps {
-	
-	
-sh 'mvn clean deploy -DskipTests'
-sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
-	
-	
-}
+ 
+	  
+          stage('deploy jar to nexus'){
+              steps{
+                  sh 'mvn deploy:deploy-file -DgroupId=com.tn.esprit.rh \
+                        -DartifactId=achat \
+                        -Dversion=1.1.0 \
+                        -Dpackaging=jar \
+                        -Dfile=./target/achat-1.1.0.jar \
+                        -DrepositoryId=esprit-devops \
+                        -Durl=http://
+				192.168.1.10:8081/repository/esprit-devops/'
+              }
+          }
+	  
+
 }  
 }
 }
