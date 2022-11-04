@@ -18,7 +18,7 @@ archive 'target/*.jar'
 }
 	stage("build & SonarQube analysis") {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.139:9000 -Dsonar.login=admin -Dsonar.password=sonar'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.139:9000 -Dsonar.login=admin -Dsonar.password=sonarqube'
             }
 	}
 	
