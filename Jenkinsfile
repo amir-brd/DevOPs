@@ -8,18 +8,6 @@ agent any
     }
 
 stages {
-	stage('Cloning our Git') { 
-10
-            steps { 
-11
-                git 'https://github.com/5se4-G1/DevOPs.git' 
-12
-            }
-13
-        } 
-
-
-
 stage('Build Artifact - Maven') {
 steps {
 sh "mvn clean package -Dmaven.test.skip=true"
