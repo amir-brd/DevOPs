@@ -20,18 +20,35 @@ archive 'target/*.jar'
             }
 	}
 	
-          stage('nexus'){
-             steps{
-                 sh 'mvn deploy -e '
-
-             }
-         }
 	
-            
-29
-        
+	stage('Building our image') { 
+            steps { 
+                script { 
+                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            } 
+        }
 
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                   docker.withRegistry( '', registryCredential ){ 
+                       dockerImage.push() 
+                   }
+                } 
+            }
+        }
+	stage('Nexus Stage') {
+steps {
 	
-       
+	
+sh 'mvn clean deploy -DskipTests'
+sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+	
+	
+	
+}
+} 
+	
      }
 }
