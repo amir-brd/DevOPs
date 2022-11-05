@@ -6,6 +6,11 @@ agent any
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
+	 dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+	 docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                   }
+	
 
 stages {
 stage('Build Artifact - Maven') {
@@ -27,23 +32,6 @@ archive 'target/*.jar'
              }
          }
 	
- stage('Building our image') { 
-            steps { 
-                
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"   
-            } 
-        }
-
-        stage('Deploy our image') { 
-            steps { 
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                   }
-                } 
-            }
-        }
-
        
      }
 }
