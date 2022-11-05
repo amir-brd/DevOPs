@@ -27,11 +27,6 @@ archive 'target/*.jar'
              }
          }
 	
-            
-29
-        
-
-	
        
      }
 }
