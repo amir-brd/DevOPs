@@ -38,15 +38,10 @@ archive 'target/*.jar'
                 } 
             }
         }
-	stage('Nexus Stage') {
-steps {
-	
-	
-sh 'mvn clean deploy -DskipTests'
-sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
-	
-}	
-	
-}
+	stage("nexus deploy"){
+              steps {
+                  sh 'mvn deploy'
+                     }
+         }
 }   
 }
