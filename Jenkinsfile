@@ -2,14 +2,12 @@ pipeline {
 
 agent any
 	 environment {
-        registry = "wiemifaoui/projet"
+        registry = "fatmabe/DevOPs"
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
 
 stages {
-
-
 stage('Build Artifact - Maven') {
 steps {
 sh "mvn clean package -Dmaven.test.skip=true"
@@ -18,24 +16,16 @@ archive 'target/*.jar'
 }
 	stage("build & SonarQube analysis") {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.139:9000 -Dsonar.login=admin -Dsonar.password=sonarqube'
+                sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.10:9000 -Dsonar.login=admin -Dsonar.password=sonar'
             }
 	}
 	
- 
-	  
-          stage('deploy jar to nexus'){
-              steps{
-                  sh 'mvn deploy:deploy-file -DgroupId=com.tn.esprit.rh \
-                        -DartifactId=achat \
-                        -Dversion=1.1.0 \
-                        -Dpackaging=jar \
-                        -Dfile=./target/achat-1.1.0.jar \
-                        -DrepositoryId=esprit-devops \
-                        -Durl=http://
-				192.168.1.139:8081/repository/esprit-devops/'
-              }
-          }
+          stage('nexus'){
+             steps{
+                 sh 'mvn deploy -e '
+
+             }
+         }
 	  
  stage('Building our image') { 
             steps { 
@@ -55,10 +45,6 @@ archive 'target/*.jar'
             }
         }
 
-        stage('Cleaning up') { 
-            steps { 
-               sh "docker rmi $registry:$BUILD_NUMBER" 
-            }
-        } 
+       
      }
 }
