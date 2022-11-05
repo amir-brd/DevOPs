@@ -30,7 +30,7 @@ archive 'target/*.jar'
 	stage('Building our image') { 
             steps { 
                 script { 
-                  sh 'dockerImage = docker.build registry + ":$BUILD_NUMBER" '
+                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             } 
         }
@@ -38,8 +38,8 @@ archive 'target/*.jar'
         stage('Deploy our image') { 
             steps { 
                 script { 
-                   sh 'docker.withRegistry( '', registryCredential ) '{ 
-                       sh 'dockerImage.push() ' 
+                   docker.withRegistry( '', registryCredential ){ 
+                       dockerImage.push() 
                    }
                 } 
             }
