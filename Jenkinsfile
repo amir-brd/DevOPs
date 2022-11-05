@@ -2,7 +2,7 @@ pipeline {
 
 agent any
 	 environment {
-        registry = "fatmabe/DevOps"
+        registry = "fatmabe/DevOPs"
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
@@ -45,10 +45,6 @@ archive 'target/*.jar'
             }
         }
 
-        stage('Cleaning up') { 
-            steps { 
-               sh "docker rmi $registry:$BUILD_NUMBER" 
-            }
-        } 
+       
      }
 }
