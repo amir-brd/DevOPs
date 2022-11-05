@@ -20,12 +20,6 @@ archive 'target/*.jar'
             }
 	}
 	
-          stage('nexus'){
-             steps{
-                 sh 'mvn deploy -e '
-
-             }
-         }
 	
 	stage('Building our image') { 
             steps { 
