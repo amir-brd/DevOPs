@@ -2,16 +2,12 @@ pipeline {
 
 agent any
 	 environment {
-        registry = "wiemifaoui/DevOps"
+        registry = "wiemifaoui/DevOPs"
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
-
 stages {
 	
-
-
-
 stage('Build Artifact - Maven') {
 steps {
 sh "mvn clean package -Dmaven.test.skip=true"
@@ -24,13 +20,35 @@ archive 'target/*.jar'
             }
 	}
 	
-	stage('nexus'){
-             steps{
-                 sh 'mvn deploy -e '
+	
+	stage('Building our image') { 
+            steps { 
+                script { 
+                  dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            } 
+        }
 
-             }
-         }
-	  
-
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                   docker.withRegistry( '', registryCredential ){ 
+                       dockerImage.push() 
+                   }
+                } 
+            }
+        }
+	stage('Nexus Stage') {
+steps {
+	
+	
+sh 'mvn clean deploy -DskipTests'
+sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
+	
+	
+	
 }
+} 
+	
+     }
 }
