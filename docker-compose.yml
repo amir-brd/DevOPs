@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    image: mysql
+    image: mysql:seyf89/devopsimage
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: 
