@@ -7,15 +7,7 @@ agent any
         dockerImage = ''
     }
 stages {
-	 stage('Deploy our image') { 
-            steps { 
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                   }
-                } 
-            }
-        }
+	
 stage('Build Artifact - Maven') {
 steps {
 sh "mvn clean package -Dmaven.test.skip=true"
