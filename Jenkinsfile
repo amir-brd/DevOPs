@@ -6,12 +6,6 @@ agent any
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
-	 dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-	 docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                   }
-	
-
 stages {
 stage('Build Artifact - Maven') {
 steps {
