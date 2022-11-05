@@ -26,10 +26,14 @@ archive 'target/*.jar'
 
              }
          }
-	 stage('Building our image') { 
-            steps {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-	    }
-            }
+	stage('Docker Build and Push') {
+       steps {
+         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+           sh 'printenv'
+           sh 'sudo docker build -t motazmezrani/ci:latest .'
+           sh 'docker push motazmezrani/ci:latest '
+         }
+       }
+     }
      }
 }
