@@ -1,4 +1,4 @@
-/*package tn.esprit.rh.achat;
+package tn.esprit.rh.achat;
 import org.springframework.transaction.annotation.Transactional;
 import tn.esprit.rh.achat.entities.DetailFournisseur;
 import tn.esprit.rh.achat.entities.Facture;
@@ -21,7 +21,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 
-@SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
 
 
@@ -99,4 +98,4 @@ import static org.junit.Assert.assertNotEquals;
 		assertEquals(1L, Optional.ofNullable(fourn.getSecteurActivites().iterator().next().getIdSecteurActivite()).get().longValue());
 
 	}
-}*/
+}

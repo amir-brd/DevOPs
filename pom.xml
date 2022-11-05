@@ -86,13 +86,6 @@
 		</dependency>
 
 	</dependencies>
-	<distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<url>http://192.168.1.10:8081/repository/maven-releases/</url>
-		</repository>
-	</distributionManagement>
-	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
