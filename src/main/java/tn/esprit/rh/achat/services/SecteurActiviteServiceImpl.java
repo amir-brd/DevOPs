@@ -15,38 +15,22 @@ public class SecteurActiviteServiceImpl implements ISecteurActiviteService{
 
 	@Autowired
 	SecteurActiviteRepository secteurActiviteRepository;
-	
-
 	@Override
-	public List<SecteurDTO> retrieveAllSecteurActivite2() {
-		List<SecteurActivite> findAll = (List<SecteurActivite>) secteurActiviteRepository.findAll();
-		return ConverterSecteur.entityToDto(findAll);
+	public List<SecteurActivite> retrieveAllSecteurActivite() {
+		return (List<SecteurActivite>) secteurActiviteRepository.findAll();
 	}
-
-	
-
 	@Override
 	public void deleteSecteurActivite(Long id) {
 		secteurActiviteRepository.deleteById(id);
-		
 	}
-
-	
-	
-	
 	@Override
-	public SecteurDTO retrieveSecteurActivite2( Long id) {
-		SecteurActivite orElse = secteurActiviteRepository.findById(id).orElse(null);
-		return ConverterSecteur.entityToDto(orElse);
-		
+	public SecteurActivite updateADDSecteurActivite(SecteurActivite sa) {
+		secteurActiviteRepository.save(sa);
+		return sa;
 	}
-	
 	@Override
-public SecteurDTO addANDupdate2( SecteurDTO dto) {
-		
-		SecteurActivite secteurActivite = ConverterSecteur.dtoToEntity(dto);
-		secteurActivite =  secteurActiviteRepository.save(secteurActivite );
-		return ConverterSecteur.entityToDto(secteurActivite );
+	public SecteurActivite retrieveSecteurActivite(Long id) {
+		SecteurActivite secteurActivite = secteurActiviteRepository.findById(id).orElse(null);
+		return secteurActivite;
 	}
-
 }
