@@ -2,7 +2,6 @@ version: '3'
 services:
   database:
     image: mysql:8
-    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: wejden
       MYSQL_DATABASE: achatdb
@@ -13,9 +12,8 @@ services:
        - /home/mysql/data:/var/lib/mysql
   spring-boot:
     build: ./
-    container_name: spring
     ports:
-      - 8083:8083
+      - 8084:8083
     depends_on:
       - database
     restart: on-failure
