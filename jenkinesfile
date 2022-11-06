@@ -34,5 +34,15 @@ sh'mvn clean deploy -Dmaven.test.skip=true -Dresume=false'
 }
 } 
 	
+	
+	stage('E-mail Notification...') {
+              steps {
+  mail to: "wifaoui@gmail.com",
+                                    subject: "Build successfull",
+                                    body: " this is a Jenkins Pipeline alert for launching Cycle"
+                            echo 'successful'
+
+              }
+	
      }
 }
